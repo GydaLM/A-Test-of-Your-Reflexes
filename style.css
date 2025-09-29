@@ -1,0 +1,35 @@
+#main{
+    width: 600px;
+}
+h1{
+    text-align: center;
+}
+.circleContainer{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+}
+.circle{
+    border-radius: 50%;
+    background-color: darkmagenta;
+    width: 100px;
+    height: 100px;
+}
+.targetToClick{
+    background-color: gold;
+    cursor: pointer;
+}
+body.default-theme {
+    background-color: white;
+    color: black;
+}
+body.dark-theme {
+    background-color: #1a1a1a;
+    color: white;
+}
+body.blue-theme {
+    background-color: #001f3f;
+    color: #00d9ff;
+}
