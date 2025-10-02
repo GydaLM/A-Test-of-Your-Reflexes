@@ -64,6 +64,41 @@ function togglePause(){
     updateView()
 }
 
+function resetScores(){
+    highScore = null;
+    reactionTime = null;
+    lastFive = [];
+    localStorage.removeItem('highScore');
+    updateView()
+}
+
+//Functions related to changing the difficulty!
+
+function changeDifficulty(level){
+    difficulty = level;
+    //saves the chosen diffculty to local storage, like with the high score
+    localStorage.setItem('difficulty', difficulty);
+    updateView()
+}
+
+//this functions decides how long the delay will be depending on what difficulty is chosen
+function getDelay(){
+    if(difficulty === 'easy'){
+        return 0;
+    }
+    else if(difficulty === 'normal'){
+        return 3000;
+    }
+    else if(difficulty === 'hard'){
+        //4001 so it will be 4000 ms = 4 sec exactly and not 3999 ms which is right under 4 sec
+        return Math.floor(Math.random()*4001);
+    }
+    else return 1000;
+}
+
+//Functions related to changing the theme!
+
+//This doesnt require a global theme variable since it is stored locally and only used there
 function changeTheme(theme){
     //removes the theme classes from body
     document.body.classList.remove('default-theme', 'dark-theme', 'blue-theme', 'Stephanie-theme')
