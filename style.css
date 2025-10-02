@@ -22,23 +22,56 @@ h1{
 }
 .circle{
     border-radius: 50%;
-    background-color: darkmagenta;
     width: 100px;
     height: 100px;
+    transition: all 300ms;
+}
+.circle:hover{
+    transform: scale(1.1);
 }
 .targetToClick{
-    background-color: gold;
     cursor: pointer;
 }
-body.default-theme {
+body.default-theme{
     background-color: white;
     color: black;
 }
-body.dark-theme {
-    background-color: #1a1a1a;
-    color: white;
+body.default-theme .circle{
+    background-color: darkmagenta;
 }
-body.blue-theme {
+body.default-theme .circle.targetToClick{
+    background-color: gold;
+}
+body.dark-theme{
+    background-color: #1a1a1a;
+    color: antiquewhite;
+}
+body.dark-theme .circle{
+    background-color: rgb(76, 137, 74);
+}
+body.dark-theme .circle.targetToClick{
+    background-color: rgb(163, 210, 135);
+    filter: blur(3px);
+}
+body.blue-theme{
     background-color: #001f3f;
     color: #00d9ff;
+}
+body.blue-theme .circle{
+    background-color: rgb(68, 138, 219);
+}
+body.blue-theme .circle.targetToClick{
+    background-color: rgb(69, 191, 221);
+    filter: drop-shadow(5px 5px 10px rgb(77, 121, 240));
+}
+body.Stephanie-theme{
+    background-color: #1c1c1c;
+    color: #e0e0e0;
+}
+body.Stephanie-theme .circle{
+    background-color: #7c73e6;
+}
+body.Stephanie-theme .circle.targetToClick{
+    background-color: #fafafa;
+    filter: blur(3px);
 }

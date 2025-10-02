@@ -47,9 +47,26 @@ function targetClick(event){
     updateView()
 }
 
+//adds an event that checks if the spacebar button has been pressed down, does NOT wait
+//until it has been released (that is keyup instead of keydown)
+document.addEventListener('keydown', function(event){
+    if(event.code === 'Space') {
+        // //puts the variable to be what it ISN'T before aka toggle between pause = true/false
+        // //moved it down to onclick function so it does the same as the button with onclick
+        // pause = !pause;
+        //add this to prevent the screen from scrolling when you click spacebar
+        event.preventDefault();
+        togglePause()
+    }
+});
+function togglePause(){
+    pause = !pause;
+    updateView()
+}
+
 function changeTheme(theme){
     //removes the theme classes from body
-    document.body.classList.remove('default-theme', 'dark-theme', 'blue-theme')
+    document.body.classList.remove('default-theme', 'dark-theme', 'blue-theme', 'Stephanie-theme')
     //adds the selected theme to body
     document.body.classList.add(`${theme}-theme`)
     //save the theme in local storage so it stays, like with the high score
