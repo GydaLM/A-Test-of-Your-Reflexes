@@ -96,9 +96,31 @@ function getDelay(){
     else return 1000;
 }
 
+//Functions related to changing the amount of circles
+
+function changeAmtOfCircles(amount){
+    amtOfCircles = amount;
+    //saves the chosen amount of circles to local storage, like with the high score
+    localStorage.setItem('amtCircles', amtOfCircles);
+    updateView()
+}
+
+function getAmount(){
+    if(amtOfCircles === 'nine'){
+        return 9;
+    }
+    else if(amtOfCircles === 'sixteen'){
+        return 16;
+    }
+    else if(amtOfCircles === 'twentyfive'){
+        return 25;
+    }
+    else return 36;
+}
+
 //Functions related to changing the theme!
 
-//This doesnt require a global theme variable since it is stored locally and only used there
+//This way doesnt require a global theme variable since it is stored locally and only used there
 function changeTheme(theme){
     //removes the theme classes from body
     document.body.classList.remove('default-theme', 'dark-theme', 'blue-theme', 'Stephanie-theme')

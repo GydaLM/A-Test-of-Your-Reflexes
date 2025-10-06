@@ -6,6 +6,8 @@ let reactionTime = null;
 let lastFive = [];
 let pause = true;
 
+let amtOfCircles = localStorage.getItem('amtCircles') || 'twentyfive';
+
 //declares a global variable that can be used while also loading
 //the difficulty saved if it has been saved
 let difficulty = localStorage.getItem('difficulty') || 'normal';

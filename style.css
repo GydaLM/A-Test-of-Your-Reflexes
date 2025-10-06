@@ -7,6 +7,13 @@ body{
     align-items: center;
     min-height: 100vh;
 }
+select{
+    margin: 5px;
+}
+button{
+    margin-top: 10px;
+    margin-bottom: 15px;;
+}
 #main{
     width: 600px;
 }
@@ -32,6 +39,8 @@ h1{
 .targetToClick{
     cursor: pointer;
 }
+
+/* Kode til de forskjellige temaene */
 body.default-theme{
     background-color: white;
     color: black;
