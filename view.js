@@ -17,6 +17,8 @@ function updateView(){
     `
     //?? '--' means that if the value of reactionTime is null or undefined, show --
     addListener()
+    //changes the appearance to keep the grid 3x3, 4x4 etc. based on amount of circles
+    adjustGrid()
     //if the game is NOT paused, the setTimeout will run the selectDiv function
     if(!pause){
         const delay = getDelay();

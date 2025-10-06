@@ -1,4 +1,5 @@
 const main = document.getElementById('main');
+const Zenos = document.getElementById('testOfReflexesZenos');
 
 let startTime = null;
 let finishTime = null;

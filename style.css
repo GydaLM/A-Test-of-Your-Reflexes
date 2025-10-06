@@ -12,19 +12,20 @@ select{
 }
 button{
     margin-top: 10px;
-    margin-bottom: 15px;;
-}
-#main{
-    width: 600px;
+    margin-bottom: 15px;
 }
 h1{
     text-align: center;
 }
 .circleContainer{
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
     gap: 10px;
+    margin: 40px auto;
+    /*content - affects the whole grid*/
     justify-content: center;
+    align-content: center;
+    /*items - affects the element within the cell aka centers it in the cell itself*/
+    justify-items: center;
     align-items: center;
 }
 .circle{
@@ -60,7 +61,7 @@ body.dark-theme .circle{
 }
 body.dark-theme .circle.targetToClick{
     background-color: rgb(163, 210, 135);
-    filter: blur(3px);
+    box-shadow: 0 0 12px rgba(163, 210, 135, 0.8);
 }
 body.blue-theme{
     background-color: #001f3f;

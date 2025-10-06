@@ -16,6 +16,21 @@ const allCircles = document.querySelectorAll('.circle');
         allCircles[i].addEventListener('click', targetClick);
     }
 }
+//changes the appearance of the grid depending on the amount of circles
+function adjustGrid(){
+    const container = document.querySelector('.circleContainer');
+    if(!container) return;
+    //gives the value of the amount the number chosen by getAmount
+    const amount = getAmount();
+    //finds the square root of the selected amount of circles
+    const gridSize = Math.sqrt(amount);
+    
+    container.style.display = 'grid';
+    container.style.gridTemplateColumns = `repeat(${gridSize}, 1fr)`;
+    container.style.justifyContent = 'center';
+    container.style.alignItems = 'center';
+    container.style.gap = '10px';
+}
 
 //event is a built in function of the browser with information it sends by default, one of the
 //things it sends is when it was clicked
@@ -76,6 +91,9 @@ function resetScores(){
 
 function changeDifficulty(level){
     difficulty = level;
+    if(difficulty === 'hard'){
+         Zenos.play()
+    }
     //saves the chosen diffculty to local storage, like with the high score
     localStorage.setItem('difficulty', difficulty);
     updateView()
