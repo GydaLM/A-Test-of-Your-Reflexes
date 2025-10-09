@@ -9,11 +9,26 @@ const allCircles = document.querySelectorAll('.circle');
 }
 
 function addListener(){
-const allCircles = document.querySelectorAll('.circle');
+    const allCircles = document.querySelectorAll('.circle');
     //adds an eventListener to every element with circle on it that activates the function 
     //targetClick when clicked
     for(let i=0; i<allCircles.length; i++){
-        allCircles[i].addEventListener('click', targetClick);
+        const circle = allCircles[i];
+
+        if(difficulty==='Mavi'){
+            //mouseenter makes it so that the event activates *once* when you hover over
+            //the element the event listener is on
+            //event get's passed into the code as a parameter after the arrow and along
+            //to the trollMavi function
+            circle.addEventListener('mouseenter', (event) => {
+                if(circle.classList.contains('targetToClick')){
+                    trollMavi(event);
+                }
+            });
+        }
+        else{
+            circle.addEventListener('click', targetClick);
+        }
     }
 }
 //changes the appearance of the grid depending on the amount of circles
@@ -83,6 +98,9 @@ function togglePause(){
     }
     else{
         overlay.classList.add('hidden');
+        //checks if the difficulty is Mavi once you unpause, and if it is it runs the
+        //rickRollTroll function after 10 seconds
+        if(difficulty === 'Mavi') setTimeout(rickRollTroll, 10000);
     }
     updateView()
 }
@@ -100,7 +118,10 @@ function resetScores(){
 function changeDifficulty(level){
     difficulty = level;
     if(difficulty === 'hard'){
-         Zenos.play()
+        Zenos.play()
+    }
+    else if(difficulty === 'Mavi'){
+        setTimeout(rickRollTroll, 10000)
     }
     //saves the chosen diffculty to local storage, like with the high score
     localStorage.setItem('difficulty', difficulty);
@@ -168,14 +189,48 @@ function loadSavedTheme(){
         themeOptions.value = theme;
     }
 }
+//function that makes the difficulty "Mavi"
+function trollMavi(event){
+    const allCircles = document.querySelectorAll('.circle');
+    const target = document.querySelector('.targetToClick');
+    
+    //checks if the target has value and if it does, removes the classlist that shows
+    //it's the one to be clicked
+    if(target){
+        target.classList.remove('targetToClick');
+    }
 
+    let newIndex;
+    do{
+        newIndex = Math.floor(Math.random()*allCircles.length);
+    }
+    while(allCircles[newIndex]===target);
+
+    allCircles[newIndex].classList.add('targetToClick');
+
+    startTime = new Date().getTime();
+}
+function rickRollTroll(){
+    if(!pause){
+        rickRoll.play()
+
+        trollFace.classList.remove('hidden');
+        trollFace.classList.add('show');
+        //removes the troll face img when the music file is done playing
+        rickRoll.onended = () => {
+            trollFace.classList.remove('show');
+            trollFace.classList.add('hidden');
+        }
+    }
+}
 //function that makes sure everything loads correctly as paused when you first open the page
 //it listenes for when the HTML elements are fully loaded, but before any media is done loading
 //the () is for parameters you would want to pass to the function => replaces function() and
 //directly runs the code after rather than having it in it's own function
 document.addEventListener('DOMContentLoaded', () =>{
-    if(pause){
-        document.getElementById('pauseSection').classList.remove('hidden');
-    }
-    updateView()
+    const overlay = document.getElementById('pauseSection');
+    //checks if pause is true and overlay has a value
+    if(pause && overlay) overlay.classList.remove('hidden');
+    //you can skip the {} if the if check only has one condition (it's a shorthand version)
+    if(typeof updateView === 'function') updateView();
 });

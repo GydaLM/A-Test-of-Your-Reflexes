@@ -117,3 +117,26 @@ body.paused .circle{
     font-weight: bold;
     text-shadow: 2px 2px 5px black;
 }
+/*troll face related styling*/
+.hidden{
+    display: none;
+}
+#trollFaceImg{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    transition: transform 10s ease-in-out;
+    z-index: 99;
+}
+/*keyframes is a built in way to make animations in css, this animation makes it larger
+and then smaller again based on the length of duration defined when it is played
+in this case 10 sec as defined under trollFaceImg.show*/
+@keyframes trollFaceAnimation{
+    0%   {transform: translate(-50%, -50%) scale(0); opacity: 0;}
+    50%  {transform: translate(-50%, -50%) scale(3); opacity: 1;}
+    100% {transform: translate(-50%, -50%) scale(1); opacity: 1;}
+}
+#trollFaceImg.show{
+    animation: trollFaceAnimation 10s ease forwards;
+}

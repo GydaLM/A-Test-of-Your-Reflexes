@@ -1,5 +1,7 @@
 const main = document.getElementById('main');
 const Zenos = document.getElementById('testOfReflexesZenos');
+const rickRoll = document.getElementById('rickRollAudio');
+const trollFace = document.getElementById('trollFaceImg');
 
 let startTime = null;
 let finishTime = null;
