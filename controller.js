@@ -76,6 +76,14 @@ document.addEventListener('keydown', function(event){
 });
 function togglePause(){
     pause = !pause;
+    const overlay = document.getElementById('pauseSection');
+    if(pause){
+        overlay.classList.remove('hidden');
+        document.body.classList.toggle('paused', pause);
+    }
+    else{
+        overlay.classList.add('hidden');
+    }
     updateView()
 }
 
@@ -160,3 +168,14 @@ function loadSavedTheme(){
         themeOptions.value = theme;
     }
 }
+
+//function that makes sure everything loads correctly as paused when you first open the page
+//it listenes for when the HTML elements are fully loaded, but before any media is done loading
+//the () is for parameters you would want to pass to the function => replaces function() and
+//directly runs the code after rather than having it in it's own function
+document.addEventListener('DOMContentLoaded', () =>{
+    if(pause){
+        document.getElementById('pauseSection').classList.remove('hidden');
+    }
+    updateView()
+});
