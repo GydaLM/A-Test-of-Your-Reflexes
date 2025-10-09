@@ -118,6 +118,7 @@ function resetScores(){
 function changeDifficulty(level){
     difficulty = level;
     if(difficulty === 'hard'){
+        Zenos.volume = 0.5;
         Zenos.play()
     }
     else if(difficulty === 'Mavi'){
@@ -212,6 +213,7 @@ function trollMavi(event){
 }
 function rickRollTroll(){
     if(!pause){
+        rickRoll.volume = 0.5;
         rickRoll.play()
 
         trollFace.classList.remove('hidden');
