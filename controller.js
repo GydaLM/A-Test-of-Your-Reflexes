@@ -28,6 +28,7 @@ function addListener(){
         }
         else{
             circle.addEventListener('click', targetClick);
+            circle.addEventListener('touchstart', targetClick);
         }
     }
 }
@@ -40,18 +41,18 @@ function adjustGrid(){
     //finds the square root of the selected amount of circles
     const gridSize = Math.sqrt(amount);
     //this changes the gap between the cells in the grid (aka the space between circles in this case)
-    //and changes it based on the amount of circles
-    let gapSize;
-    if(amount <= 9) gapSize = '40px';
-    else if(amount <= 16) gapSize = '30px';
-    else if(amount <= 25) gapSize = '20px';
-    else gapSize = '15px';
+    //and changes it based on the amount of circles AND screen width
+    let circleSize;
+    if(amount <= 9) circleSize = Math.min(200, Math.max(100, window.innerWidth / 4));
+    else if(amount <= 16) circleSize = Math.min(160, Math.max(70, window.innerWidth / 5));
+    else if(amount <= 25) circleSize = Math.min(120, Math.max(50, window.innerWidth / 6));
+    else circleSize = Math.min(100, Math.max(40, window.innerWidth / 7));
 
-    container.style.display = 'grid';
-    container.style.gridTemplateColumns = `repeat(${gridSize}, 1fr)`;
-    container.style.justifyContent = 'center';
-    container.style.alignItems = 'center';
-    container.style.gap = gapSize;
+    let gapSize = Math.max(10, circleSize / 6);
+
+    container.style.gridTemplateColumns = `repeat(${gridSize}, ${circleSize}px)`;
+    container.style.gridAutoRows = `${circleSize}px`;
+    container.style.gap = `${gapSize}px`;
 }
 
 //event is a built in function of the browser with information it sends by default, one of the
