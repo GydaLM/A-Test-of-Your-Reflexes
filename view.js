@@ -32,7 +32,7 @@ function updateView(){
     //this sets the drop down menu to match the currently chosen amount of circles
     const chosenAmount = document.getElementById('amtOfCirclesOptions');
     if(chosenAmount) chosenAmount.value = amtOfCircles;
-    
+
     //changes the appearance to keep the grid 3x3, 4x4 etc. based on amount of circles
     adjustGrid()
 }
@@ -88,10 +88,15 @@ function drawCircles(){
 
 function drawLastFive(scores){
     let html = ``;
-    for(let i=0; i<scores.length; i++){
+    for(let i=0; i<5; i++){
+        if(scores[i] !==undefined){        
         html+=/*HTML*/`
         <li>${scores[i]} sec</li>
         `
+        }
+        else{
+        html +=/*HTML*/ `<li>&mdash;</li>`;
+        }
     }
     return html;
 }

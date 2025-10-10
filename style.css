@@ -15,7 +15,7 @@ button{
     margin-bottom: 15px;
 }
 h1{
-    font-size: 6vw;
+    font-size: clamp(16px, 6vw, 48px);
     text-align: center;
 }
 .circleContainer{
