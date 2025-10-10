@@ -2,13 +2,19 @@ updateView()
 function updateView(){
     main.innerHTML = /*HTML*/ `
     <h1>A Test of Your Reflexes!</h1>
-    ${drawThemeSelection()}
-    <br>
-    ${drawDifficultySelection()}
-    ${drawAmtOfCircles()}
-    <br>
-    <button onclick="togglePause()">${pause ? 'Resume' : 'Pause'}</button>
-    <button onclick="resetScores()">Reset All Scores</button>
+    <div class="topBar">
+        <div class="menuWrapper">
+            <button class="menuToggle" onclick="toggleMenu()">☰ Options</button>
+            <div class="menuContent">
+                ${drawThemeSelection()}
+                ${drawDifficultySelection()}
+                ${drawAmtOfCircles()}
+            <button onclick="resetScores()">Reset All Scores</button>
+            </div>
+        </div>
+        <button class="pauseButton" onclick="togglePause()">${pause ? 'Resume' : 'Pause'}</button>
+    </div>
+    <div class="menuOverlay" onclick="toggleMenu()"></div>
     <div class="circleContainer">${drawCircles()}</div>
     <p>Time: ${reactionTime ?? '--'}</p>
     <p>High Score: ${highScore ?? '--'}</p>
@@ -39,7 +45,7 @@ function updateView(){
 
 function drawThemeSelection(){
     let html = /*HTML*/`
-        <label for="themeOptions">Selected Theme:</label>
+        <label for="themeOptions">Theme:</label>
         <select id="themeOptions" onchange="changeTheme(this.value)">
             <option value="default">Default</option>
             <option value="dark">Dark</option>
@@ -52,7 +58,7 @@ function drawThemeSelection(){
 
 function drawDifficultySelection(){
     let html = /*HTML*/`
-        <label for="difficultyOptions">Selected Difficulty:</label>
+        <label for="difficultyOptions">Difficulty:</label>
         <select id="difficultyOptions" onchange="changeDifficulty(this.value)">
             <option value="easy">Easy</option>
             <option value="normal">Normal</option>
@@ -65,7 +71,7 @@ function drawDifficultySelection(){
 
 function drawAmtOfCircles(){
     let html = /*HTML*/`
-        <label for="amtOfCirclesOptions">Selected Amount of Circles</label>
+        <label for="amtOfCirclesOptions">Amount of Circles</label>
         <select id="amtOfCirclesOptions" onchange="changeAmtOfCircles(this.value)">
             <option value="nine">9</option>
             <option value="sixteen">16</option>

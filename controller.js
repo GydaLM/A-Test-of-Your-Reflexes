@@ -244,3 +244,11 @@ document.addEventListener('DOMContentLoaded', () =>{
     //you can skip the {} if the if check only has one condition (it's a shorthand version)
     if(typeof updateView === 'function') updateView();
 });
+
+//function that controls the options menu
+function toggleMenu(){
+    const menu = document.querySelector('.menuContent');
+    const overlay = document.querySelector('.menuOverlay');
+    if(menu) menu.classList.toggle('show');
+    if(overlay) overlay.classList.toggle('show');
+}

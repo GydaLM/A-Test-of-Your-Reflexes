@@ -18,6 +18,20 @@ h1{
     font-size: clamp(16px, 6vw, 48px);
     text-align: center;
 }
+.topBar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+.pauseButton{
+    padding: 6px 10px;
+    font-size: 1em;
+    cursor: pointer;
+    border-radius: 5px;
+    border: 2px solid transparent;
+    transition: background 0.3s, color 0.3s, border 0.3s;
+}
 .circleContainer{
     display: grid;
     margin: 40px auto;
@@ -44,7 +58,7 @@ h1{
 
 /* Kode related to the different themes */
 body.default-theme{
-    background-color: white;
+    background-color: #c6bdca;
     color: black;
 }
 body.default-theme .circle{
@@ -53,7 +67,19 @@ body.default-theme .circle{
 body.default-theme .circle.targetToClick{
     background-color: gold;
 }
-
+body.default-theme .pauseButton{
+    background-color: #800080;
+    color: white;
+    border-color: darkmagenta; 
+}
+body.default-theme .menuToggle,
+body.default-theme .menuContent button{
+    background-color: darkmagenta;
+    color: white;
+}
+body.default-theme .menuContent{
+    background-color: #333;
+}
 body.dark-theme{
     background-color: #1a1a1a;
     color: antiquewhite;
@@ -62,8 +88,21 @@ body.dark-theme .circle{
     background-color: rgb(76, 137, 74);
 }
 body.dark-theme .circle.targetToClick{
-    background-color: rgb(163, 210, 135);
-    box-shadow: 0 0 12px rgba(163, 210, 135, 0.8);
+    background-color: #aaff00;
+    box-shadow: 0 0 15px rgba(170, 255, 0, 0.9);
+}
+body.dark-theme .pauseButton{
+    background-color: #5a995a;
+    color: antiquewhite;
+    border-color: rgb(76, 137, 74);
+}
+body.dark-theme .menuToggle,
+body.dark-theme .menuContent button{
+    background-color: rgb(76, 137, 74);
+    color: antiquewhite;
+}
+body.dark-theme .menuContent{
+    background-color: #1a1a1a;
 }
 
 body.blue-theme{
@@ -77,8 +116,21 @@ body.blue-theme .circle{
     transition: all 0.3s ease;
 }
 body.blue-theme .circle.targetToClick{
-    background: radial-gradient(circle at center, #60a5fa, #2563eb);
+    background: radial-gradient(circle at center, #60a5fa, #3b78fa);
     box-shadow: 0 0 35px 10px rgba(147, 197, 253, 0.9);
+}
+body.blue-theme .pauseButton{
+    background-color: rgb(34, 71, 113);
+    color: #6bc9f5;
+    border-color: rgb(43, 86, 135);
+}
+body.blue-theme .menuToggle,
+body.blue-theme .menuContent button{
+    background-color: rgb(34, 71, 113);
+    color: #6bc9f5;
+}
+body.blue-theme .menuContent{
+    background-color: #001f3f;
 }
 
 body.Stephanie-theme{
@@ -91,6 +143,19 @@ body.Stephanie-theme .circle{
 body.Stephanie-theme .circle.targetToClick{
     background-color: #fafafa;
     filter: blur(3px);
+}
+body.Stephanie-theme .pauseButton {
+    background-color: #5e53c0;
+    color: #e0e0e0;
+    border-color: #7c73e6;
+}
+body.Stephanie-theme .menuToggle,
+body.Stephanie-theme .menuContent button{
+    background-color: #7c73e6;
+    color: #e0e0e0;
+}
+body.Stephanie-theme .menuContent{
+    background-color: #1c1c1c;
 }
 
 /*Code related to the pause overlay*/
@@ -146,4 +211,58 @@ in this case 10 sec as defined under trollFaceImg.show*/
 }
 #trollFaceImg.show{
     animation: trollFaceAnimation 10s ease forwards;
+}
+
+/*CSS for the menu*/
+.menuWrapper{
+    position: relative;
+    display: inline-block;
+}
+.menuToggle{
+    padding: 6px 10px;
+    font-size: 1em;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    transition: background 0.3s, color 0.3s;
+}
+.menuContent{
+    position: fixed;
+    top: 0;
+    right: -250px;
+    width: 250px;
+    height: 100%;
+    background: #222;
+    color: white;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    border-radius: 0 5px 5px 0;
+    transition: left 0.3s ease;
+    z-index: 100;
+}
+.menuContent.show{
+    right: 0;
+}
+.menuContent button{
+    padding: 6px 10px;
+    font-size: 1em;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    transition: background 0.3s, color 0.3s;
+}
+.menuOverlay{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.4);
+    display: none;
+    z-index: 90;
+}
+.menuOverlay.show{
+    display: block;
 }
