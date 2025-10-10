@@ -19,6 +19,7 @@ h1{
 }
 .circleContainer{
     display: grid;
+    /*the gap size here is just a backup, since the gap is defined in adjustGrid()*/
     gap: 10px;
     margin: 40px auto;
     /*content - affects the whole grid*/
@@ -52,6 +53,7 @@ body.default-theme .circle{
 body.default-theme .circle.targetToClick{
     background-color: gold;
 }
+
 body.dark-theme{
     background-color: #1a1a1a;
     color: antiquewhite;
@@ -63,17 +65,22 @@ body.dark-theme .circle.targetToClick{
     background-color: rgb(163, 210, 135);
     box-shadow: 0 0 12px rgba(163, 210, 135, 0.8);
 }
+
 body.blue-theme{
-    background-color: #001f3f;
-    color: #00d9ff;
+    background: radial-gradient(circle at top left, #003366 0%, #000814 100%);
+    color: #45a0ca;
+    transition: background 0.5s ease, color 0.5s ease;
 }
 body.blue-theme .circle{
-    background-color: rgb(68, 138, 219);
+    background: linear-gradient(145deg, #1d4ed8, #3b82f6);
+    box-shadow: 0 0 12px rgba(59, 130, 246, 0.6);
+    transition: all 0.3s ease;
 }
 body.blue-theme .circle.targetToClick{
-    background-color: rgb(69, 191, 221);
-    filter: drop-shadow(5px 5px 10px rgb(77, 121, 240));
+    background: radial-gradient(circle at center, #60a5fa, #2563eb);
+    box-shadow: 0 0 35px 10px rgba(147, 197, 253, 0.9);
 }
+
 body.Stephanie-theme{
     background-color: #1c1c1c;
     color: #e0e0e0;

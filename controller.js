@@ -39,12 +39,19 @@ function adjustGrid(){
     const amount = getAmount();
     //finds the square root of the selected amount of circles
     const gridSize = Math.sqrt(amount);
-    
+    //this changes the gap between the cells in the grid (aka the space between circles in this case)
+    //and changes it based on the amount of circles
+    let gapSize;
+    if(amount <= 9) gapSize = '40px';
+    else if(amount <= 16) gapSize = '30px';
+    else if(amount <= 25) gapSize = '20px';
+    else gapSize = '15px';
+
     container.style.display = 'grid';
     container.style.gridTemplateColumns = `repeat(${gridSize}, 1fr)`;
     container.style.justifyContent = 'center';
     container.style.alignItems = 'center';
-    container.style.gap = '10px';
+    container.style.gap = gapSize;
 }
 
 //event is a built in function of the browser with information it sends by default, one of the
