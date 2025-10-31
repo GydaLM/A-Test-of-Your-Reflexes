@@ -20,7 +20,10 @@ function updateView(){
     <p>High Score: ${highScore ?? '--'}</p>
     <h3>Last five scores:</h3>
     <ul>${drawLastFive(lastFive)}</ul>
+    <p>Average score: ${lastFiveAverage().toFixed(3)}</p>
     `
+    //toFixed(3) makes it show 3 decimals
+
     //?? '--' means that if the value of reactionTime is null or undefined, show --
     addListener()
     //this makes sure that the opacity changes depending on whether the variable pause is true or false

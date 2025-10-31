@@ -94,6 +94,21 @@ function targetClick(event){
     updateView()
 }
 
+//Finds the average of the last 5 scores
+function lastFiveAverage(){
+    let count = 0;
+    let sum = 0;
+
+    for (let score of lastFive){
+        sum += score;
+        count++
+    }
+    if(count === 0) return 0;
+    
+    let average = sum / count;
+    return average;
+}
+
 //adds an event that checks if the spacebar button has been pressed down, does NOT wait
 //until it has been released (that is keyup instead of keydown)
 document.addEventListener('keydown', function(event){
