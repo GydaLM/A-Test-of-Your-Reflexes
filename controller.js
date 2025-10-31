@@ -58,6 +58,11 @@ function adjustGrid(){
 //event is a built in function of the browser with information it sends by default, one of the
 //things it sends is when it was clicked
 function targetClick(event){
+    if(arcadeMode){
+        laserShot.currentTime = 0;
+        laserShot.play();
+    }
+
     //if the element that is clicked on does NOT contain the class targetToClick, jump out of 
     //the function and don't run the rest of the code in it
     if(!event.currentTarget.classList.contains('targetToClick')) return;
@@ -72,6 +77,10 @@ function targetClick(event){
         //the 'highScore' is the label you give it so you can look for it later, can be anything
         //highScore is the variable aka the information/value itself
         localStorage.setItem('highScore', highScore);
+        if(arcadeMode){
+            newHighScore.currentTime = 0;
+            newHighScore.play();
+        }
     }
 
     //unshift adds reactionTime to the beginning of the array aka index 0 and moves the other
@@ -103,9 +112,14 @@ function togglePause(){
     if(pause){
         overlay.classList.remove('hidden');
         document.body.classList.toggle('paused', pause);
+
+        if(arcadeMode) bgMusic.pause();
     }
     else{
         overlay.classList.add('hidden');
+
+        if(arcadeMode) bgMusic.play();
+
         //checks if the difficulty is Mavi once you unpause, and if it is it runs the
         //rickRollTroll function after 10 seconds
         if(difficulty === 'Mavi') setTimeout(rickRollTroll, 10000);
@@ -179,11 +193,25 @@ function getAmount(){
 //This way doesnt require a global theme variable since it is stored locally and only used there
 function changeTheme(theme){
     //removes the theme classes from body
-    document.body.classList.remove('default-theme', 'dark-theme', 'blue-theme', 'Stephanie-theme')
+    document.body.classList.remove('default-theme', 'dark-theme', 'blue-theme', 'Stephanie-theme', 'arcade-theme')
     //adds the selected theme to body
     document.body.classList.add(`${theme}-theme`)
     //save the theme in local storage so it stays, like with the high score
     localStorage.setItem('saveTheme', theme)
+
+    if(theme === 'arcade'){
+        arcadeMode = true;
+        bgMusic.volume = 0.4;
+        //Only starts the music if it's paused aka not playing already
+        if(!pause && bgMusic.paused){
+            bgMusic.play();
+        }
+    }
+    else{
+        arcadeMode = false;
+        bgMusic.pause();
+        bgMusic.currentTime = 0;
+    }
 }
 
 function loadSavedTheme(){
@@ -221,7 +249,7 @@ function trollMavi(event){
 }
 function rickRollTroll(){
     if(!pause){
-        rickRoll.volume = 0.5;
+        rickRoll.volume = 0.3;
         rickRoll.play()
 
         trollFace.classList.remove('hidden');

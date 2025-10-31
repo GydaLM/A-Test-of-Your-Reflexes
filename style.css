@@ -157,6 +157,139 @@ body.Stephanie-theme .menuContent button{
 body.Stephanie-theme .menuContent{
     background-color: #1c1c1c;
 }
+/*Arcade mode related styling*/
+body.arcade-theme h1,
+body.arcade-theme h3,
+body.arcade-theme p,
+body.arcade-theme li{
+    color: #0ff;
+    text-shadow: 
+        0 0 5px #0ff,
+        0 0 10px #0ff,
+        0 0 20px #0ff,
+        0 0 30px rgba(0, 255, 255, 0.5),
+        0 0 40px rgba(0, 255, 255, 0.3);
+    transition: text-shadow 0.2s ease-in-out;
+    animation: neonPulse 2s infinite alternate;
+}
+@keyframes neonPulse{
+    0% {
+        text-shadow: 
+            0 0 3px #0ff,
+            0 0 6px #0ff,
+            0 0 12px #0ff,
+            0 0 18px rgba(0, 255, 255, 0.5),
+            0 0 24px rgba(0, 255, 255, 0.3);
+    }
+    50% {
+        text-shadow: 
+            0 0 6px #0ff,
+            0 0 12px #0ff,
+            0 0 18px #0ff,
+            0 0 30px rgba(0, 255, 255, 0.5),
+            0 0 36px rgba(0, 255, 255, 0.3);
+    }
+    100% {
+        text-shadow: 
+            0 0 3px #0ff,
+            0 0 6px #0ff,
+            0 0 12px #0ff,
+            0 0 18px rgba(0, 255, 255, 0.5),
+            0 0 24px rgba(0, 255, 255, 0.3);
+    }
+}
+body.arcade-theme{ 
+    color: #0ff;
+    cursor: url("Media/Crosshair.png") 16 16, auto;
+    position: relative;
+    overflow-x: hidden;
+    animation: bgFlash 3s linear infinite alternate;
+}
+/*Adds animation to the background*/
+@keyframes bgFlash{
+    0% {background: radial-gradient(circle at 50% 0%, #111 0%, #000 100%);}
+    20% {background: radial-gradient(circle at 50% 0%, #222 0%, #111 100%);}
+    40% {background: radial-gradient(circle at 50% 0%, #111 0%, #000 100%);}
+    60% {background: radial-gradient(circle at 50% 0%, #333 0%, #111 100%);}
+    80% {background: radial-gradient(circle at 50% 0%, #111 0%, #000 100%);}
+    100% {background: radial-gradient(circle at 50% 0%, #222 0%, #111 100%);}
+}
+/*Starry background with animation!*/
+body.arcade-theme::before{
+    content: "";
+    position: fixed;
+    top: 0; 
+    left: 0;
+    width: 200%; 
+    height: 200%;
+    background-image: radial-gradient(#0ff 1px, transparent 1px);
+    background-size: 20px 20px;
+    opacity: 0.3;
+    animation: starMove 20s linear infinite;
+    pointer-events: none;
+    z-index: -1;
+}
+@keyframes starMove{
+    0% {transform: translate(0, 0);}
+    100% {transform: translate(-100px, -200px);}
+}
+
+body.arcade-theme .circle{
+    background: linear-gradient(145deg, #00ff00, #009900);
+    box-shadow: 0 0 20px rgba(0,255,0,0.8);
+    border-radius: 50%;
+    transition: transform 0.2s, box-shadow 0.2s;
+    animation: circlePulse 1.5s infinite alternate;
+}
+/*Adds animation to the circles*/
+@keyframes circlePulse{
+    0% {box-shadow: 0 0 20px rgba(0,255,0,0.8); transform: scale(1);}
+    50% {box-shadow: 0 0 35px rgba(0,255,0,1); transform: scale(1.05);}
+    100% {box-shadow: 0 0 20px rgba(0,255,0,0.8); transform: scale(1);}
+}
+body.arcade-theme .circle.targetToClick{
+    background: #ff1aff;
+    box-shadow: 0 0 45px #ff1aff, 0 0 70px rgba(255,26,255,0.6);
+    transform: scale(1.1);
+    animation: targetPulse 1s infinite alternate;
+}
+/*Adds animation to the target*/
+@keyframes targetPulse{
+    0% {box-shadow: 0 0 45px #ff1aff, 0 0 70px rgba(255,26,255,0.6); transform: scale(1.1);}
+    50% {box-shadow: 0 0 60px #ff1aff, 0 0 90px rgba(255,26,255,0.8); transform: scale(1.2);}
+    100% {box-shadow: 0 0 45px #ff1aff, 0 0 70px rgba(255,26,255,0.6); transform: scale(1.1);}
+}
+body.arcade-theme .pauseButton,
+body.arcade-theme .menuToggle,
+body.arcade-theme .menuContent button{
+    background-color: #111;
+    color: #0ff;
+    border: 2px solid #0ff;
+    box-shadow: 0 0 10px #0ff, 0 0 20px rgba(0, 255, 255, 0.3);
+    transition: transform 0.2s;
+    animation: neonFlicker 1.5s infinite alternate;
+}
+body.arcade-theme .pauseButton:hover,
+body.arcade-theme .menuToggle:hover,
+body.arcade-theme .menuContent button:hover{
+    transform: scale(1.05);
+}
+/*Adds animation to the button edges so it looks like it's flickering*/
+@keyframes neonFlicker{
+    0%   {box-shadow: 0 0 8px #0ff, 0 0 16px rgba(0,255,255,0.3);}
+    20%  {box-shadow: 0 0 12px #0ff, 0 0 24px rgba(0,255,255,0.4);}
+    40%  {box-shadow: 0 0 10px #0ff, 0 0 20px rgba(0,255,255,0.35);}
+    60%  {box-shadow: 0 0 14px #0ff, 0 0 28px rgba(0,255,255,0.45);}
+    80%  {box-shadow: 0 0 11px #0ff, 0 0 22px rgba(0,255,255,0.38);}
+    100% {box-shadow: 0 0 10px #0ff, 0 0 20px rgba(0,255,255,0.35);}
+}
+body.arcade-theme .menuContent{
+    background-color: #000;
+    border: 1px solid #0ff;
+    box-shadow: 0 0 20px #0ff;
+    padding: 10px;
+    border-radius: 6px;
+}
 
 /*Code related to the pause overlay*/
 #main{

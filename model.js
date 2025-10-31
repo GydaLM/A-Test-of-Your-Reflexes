@@ -2,12 +2,17 @@ const main = document.getElementById('main');
 const Zenos = document.getElementById('testOfReflexesZenos');
 const rickRoll = document.getElementById('rickRollAudio');
 const trollFace = document.getElementById('trollFaceImg');
+const bgMusic = document.getElementById('bgMusic');
+bgMusic.loop = true;
+const laserShot = document.getElementById('laserShot');
+const newHighScore = document.getElementById('newHighScore');
 
 let startTime = null;
 let finishTime = null;
 let reactionTime = null;
 let lastFive = [];
 let pause = true;
+let arcadeMode = false;
 
 let amtOfCircles = localStorage.getItem('amtCircles') || 'twentyfive';
 

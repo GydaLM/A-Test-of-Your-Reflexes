@@ -51,6 +51,7 @@ function drawThemeSelection(){
             <option value="dark">Dark</option>
             <option value="blue">Blue</option>
             <option value="Stephanie">Stephanie</option>
+            <option value="arcade">Arcade</option>
         </select>
     `
     return html;
